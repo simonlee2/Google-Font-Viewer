@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let client = GoogleFontAPI()
+        client.request(endpoint: .webfonts(nil)).responseJSON { response in
+            if response.result.isSuccess {
+                print(JSON(response.data!))
+            } else {
+                print(response.result.error!)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
