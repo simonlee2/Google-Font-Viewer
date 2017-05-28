@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180053838EF9083681EB858A /* Pods_Google_Font_Viewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A4D16AA68E2BA1A79FBB34 /* Pods_Google_Font_Viewer.framework */; };
+		9F37AE576BE9944EA3EF9917 /* Pods_Google_Font_ViewerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8477701DEF5701BE2FCB3919 /* Pods_Google_Font_ViewerTests.framework */; };
 		F4C94FF11EDA8A8C0022F1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */; };
 		F4C94FF31EDA8A8C0022F1F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */; };
 		F4C94FF61EDA8A8C0022F1F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C94FF41EDA8A8C0022F1F1 /* Main.storyboard */; };
@@ -26,6 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7117B2061F3B341BC6A48F6E /* Pods-Google Font Viewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Google Font Viewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Google Font Viewer/Pods-Google Font Viewer.release.xcconfig"; sourceTree = "<group>"; };
+		821BF2A0AAF51D067B97C835 /* Pods-Google Font ViewerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Google Font ViewerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Google Font ViewerTests/Pods-Google Font ViewerTests.release.xcconfig"; sourceTree = "<group>"; };
+		8477701DEF5701BE2FCB3919 /* Pods_Google_Font_ViewerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Google_Font_ViewerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC1950DE67FDA23A9956E28 /* Pods-Google Font ViewerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Google Font ViewerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Google Font ViewerTests/Pods-Google Font ViewerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E2570EDB4B121A44870D5E2D /* Pods-Google Font Viewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Google Font Viewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Google Font Viewer/Pods-Google Font Viewer.debug.xcconfig"; sourceTree = "<group>"; };
+		E3A4D16AA68E2BA1A79FBB34 /* Pods_Google_Font_Viewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Google_Font_Viewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C94FED1EDA8A8C0022F1F1 /* Google Font Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Font Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180053838EF9083681EB858A /* Pods_Google_Font_Viewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,18 +59,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F37AE576BE9944EA3EF9917 /* Pods_Google_Font_ViewerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC86E54042CD5E2D1B11D718 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3A4D16AA68E2BA1A79FBB34 /* Pods_Google_Font_Viewer.framework */,
+				8477701DEF5701BE2FCB3919 /* Pods_Google_Font_ViewerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4C94FE41EDA8A8C0022F1F1 = {
 			isa = PBXGroup;
 			children = (
 				F4C94FEF1EDA8A8C0022F1F1 /* Google Font Viewer */,
 				F4C950041EDA8A8C0022F1F1 /* Google Font ViewerTests */,
 				F4C94FEE1EDA8A8C0022F1F1 /* Products */,
+				FAA0F515117CDD5D19F59F8F /* Pods */,
+				AC86E54042CD5E2D1B11D718 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +117,17 @@
 			path = "Google Font ViewerTests";
 			sourceTree = "<group>";
 		};
+		FAA0F515117CDD5D19F59F8F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2570EDB4B121A44870D5E2D /* Pods-Google Font Viewer.debug.xcconfig */,
+				7117B2061F3B341BC6A48F6E /* Pods-Google Font Viewer.release.xcconfig */,
+				CEC1950DE67FDA23A9956E28 /* Pods-Google Font ViewerTests.debug.xcconfig */,
+				821BF2A0AAF51D067B97C835 /* Pods-Google Font ViewerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4C9500A1EDA8A8C0022F1F1 /* Build configuration list for PBXNativeTarget "Google Font Viewer" */;
 			buildPhases = (
+				AE9BCA7AEC2D69D68D7197DE /* [CP] Check Pods Manifest.lock */,
 				F4C94FE91EDA8A8C0022F1F1 /* Sources */,
 				F4C94FEA1EDA8A8C0022F1F1 /* Frameworks */,
 				F4C94FEB1EDA8A8C0022F1F1 /* Resources */,
+				CCE677731CBCC8DA4D42ACCD /* [CP] Embed Pods Frameworks */,
+				77A1BAA7D35307B2FAEBEADD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4C9500D1EDA8A8C0022F1F1 /* Build configuration list for PBXNativeTarget "Google Font ViewerTests" */;
 			buildPhases = (
+				93FE8439D89BF8D1F6E4DFAE /* [CP] Check Pods Manifest.lock */,
 				F4C94FFD1EDA8A8C0022F1F1 /* Sources */,
 				F4C94FFE1EDA8A8C0022F1F1 /* Frameworks */,
 				F4C94FFF1EDA8A8C0022F1F1 /* Resources */,
+				FC74A2D4F6D67BCA402631A4 /* [CP] Embed Pods Frameworks */,
+				B754FEBE5A94637DB80DE4BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +233,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77A1BAA7D35307B2FAEBEADD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Google Font Viewer/Pods-Google Font Viewer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93FE8439D89BF8D1F6E4DFAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE9BCA7AEC2D69D68D7197DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B754FEBE5A94637DB80DE4BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Google Font ViewerTests/Pods-Google Font ViewerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCE677731CBCC8DA4D42ACCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Google Font Viewer/Pods-Google Font Viewer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC74A2D4F6D67BCA402631A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Google Font ViewerTests/Pods-Google Font ViewerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F4C94FE91EDA8A8C0022F1F1 /* Sources */ = {
@@ -341,6 +472,7 @@
 		};
 		F4C9500B1EDA8A8C0022F1F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2570EDB4B121A44870D5E2D /* Pods-Google Font Viewer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T3LQ95726F;
@@ -354,6 +486,7 @@
 		};
 		F4C9500C1EDA8A8C0022F1F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7117B2061F3B341BC6A48F6E /* Pods-Google Font Viewer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T3LQ95726F;
@@ -367,6 +500,7 @@
 		};
 		F4C9500E1EDA8A8C0022F1F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEC1950DE67FDA23A9956E28 /* Pods-Google Font ViewerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -382,6 +516,7 @@
 		};
 		F4C9500F1EDA8A8C0022F1F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 821BF2A0AAF51D067B97C835 /* Pods-Google Font ViewerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
