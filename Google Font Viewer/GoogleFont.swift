@@ -19,7 +19,7 @@ struct GoogleFont {
     var files: [String: String]
     let lastModified: String
     
-    init(json: JSON) {
+    init(_ json: JSON) {
         family = json["family"].stringValue
         category = json["category"].stringValue
         variants = json["variants"].arrayValue.map({$0.stringValue})

@@ -14,17 +14,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let client = GoogleFontAPI()
-        client.request(endpoint: .webfonts(nil)).responseJSON { response in
-            switch response.result {
-            case .success:
-                if let data = response.data {
-                    let fonts = JSON(data)["items"].arrayValue.map(GoogleFont.init)
-                    print(String(reflecting: fonts[0]))
-                }
-            case .failure:
-                print(response.result.error!)
+        let manager = GoogleFontManager()
+        
+        manager.fetchAllFonts().then { fonts in
+            fonts.forEach { font in
+                print(String(reflecting: font))
             }
+        }.catch { error in
+            print(error)
         }
     }
 
