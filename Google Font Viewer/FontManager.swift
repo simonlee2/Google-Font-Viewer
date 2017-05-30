@@ -16,6 +16,23 @@ class FontManager {
         self.postScriptNameMapping = postScriptNameMapping
     }
     
+    func font(for font: GoogleFont, size: CGFloat) -> Promise<UIFont?> {
+        // look in postscriptnamemapping
+        if let postScriptName = postScriptNameMapping[font.name] {
+            return Promise { fulfill, _ in
+                fulfill(UIFont(name: postScriptName, size: size))
+            }
+        }
+        
+        return loadFont(font: font).then { (success) -> UIFont? in
+            if let postScriptName = self.postScriptNameMapping[font.name] {
+                return UIFont(name: postScriptName, size: size)
+            } else {
+                return nil
+            }
+        }
+    }
+    
     func loadFont(font: GoogleFont) -> Promise<Bool> {
         //TODO: Request goes through GoogleFontAPI
         return Alamofire.request(font.externalDocumentURL).responseData().then { data in
