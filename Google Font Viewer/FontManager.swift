@@ -33,14 +33,14 @@ class FontManager {
         }
     }
     
-    func loadFont(font: GoogleFont) -> Promise<Bool> {
+    private func loadFont(font: GoogleFont) -> Promise<Bool> {
         //TODO: Request goes through GoogleFontAPI
         return Alamofire.request(font.externalDocumentURL).responseData().then { data in
             self.registerFont(font, data: data as CFData)
         }
     }
     
-    func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
+    private func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
         let provider = CGDataProvider(data: data)
         let cgfont = CGFont(provider!)
         var err: Unmanaged<CFError>?
@@ -61,7 +61,7 @@ class FontManager {
         return true
     }
     
-    func downloadFont(url: String) {
+    private func downloadFont(url: String) {
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
             var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             

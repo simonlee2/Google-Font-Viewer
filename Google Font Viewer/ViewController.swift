@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let fontManager = FontManager()
         
         manager.fetchAllFamilies().then { families -> Void in
-            if let font = self.manager.fontMapping["Noto Sans"]?.font(withVariant: "regular") {
+            if let font = self.manager.font(family: "Noto Sans", variant: "regular") {
                 
                 fontManager.font(for: font, size: 12).then { uifont in
                     print("success? \(String(describing: uifont))")

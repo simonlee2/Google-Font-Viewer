@@ -21,6 +21,10 @@ class GoogleFontManager {
         self.fontMapping = [:]
     }
     
+    func font(family: String, variant: String) -> GoogleFont? {
+        return fontMapping[family]?.font(withVariant: variant)
+    }
+    
     func fetchAllFamiliesJSON(sortType: SortType? = nil) -> Promise<JSON> {
         return Promise { fulfill, reject in
             api.request(endpoint: .webfonts(sortType)).responseJSON { response in
