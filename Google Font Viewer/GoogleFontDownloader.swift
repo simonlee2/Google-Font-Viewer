@@ -16,9 +16,9 @@ class GoogleFontDownloader {
     var api: GoogleFontAPI
     var fontMapping: [String: GoogleFontFamily]
     
-    init(api: GoogleFontAPI = GoogleFontAPI()) {
+    init(api: GoogleFontAPI = GoogleFontAPI(), fontMapping: [String: GoogleFontFamily] = [:]) {
         self.api = api
-        self.fontMapping = [:]
+        self.fontMapping = fontMapping
     }
     
     func font(family: String, variant: String) -> GoogleFont? {
