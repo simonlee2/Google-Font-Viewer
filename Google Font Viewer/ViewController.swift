@@ -8,28 +8,30 @@
 
 import UIKit
 import SwiftyJSON
+import PromiseKit
+import Alamofire
 
 class ViewController: UIViewController {
+    let manager = GoogleFontManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let manager = GoogleFontManager()
         
-        manager.fetchAllFonts().then { fonts in
-            fonts.forEach { font in
-                print(String(reflecting: font))
+        manager.fetchAllFamilies().then { families -> Void in
+            if let family = self.manager.fontMapping["Noto Sans"] {
+                let font = family.font(withVariant: "regular")
+                print(font)
             }
         }.catch { error in
             print(error)
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

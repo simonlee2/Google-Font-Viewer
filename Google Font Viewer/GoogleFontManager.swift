@@ -14,12 +14,14 @@ typealias SortType = GoogleFontAPI.Endpoints.SortType
 
 class GoogleFontManager {
     var api: GoogleFontAPI
+    var fontMapping: [String: GoogleFontFamily]
     
     init(api: GoogleFontAPI = GoogleFontAPI()) {
         self.api = api
+        self.fontMapping = [:]
     }
     
-    func fetchAllFontsJSON(sortType: SortType? = nil) -> Promise<JSON> {
+    func fetchAllFamiliesJSON(sortType: SortType? = nil) -> Promise<JSON> {
         return Promise { fulfill, reject in
             api.request(endpoint: .webfonts(sortType)).responseJSON { response in
                 switch response.result {
@@ -33,11 +35,15 @@ class GoogleFontManager {
         }
     }
     
-    func fetchAllFonts(sortType: SortType? = nil) -> Promise<[GoogleFont]> {
-        return fetchAllFontsJSON(sortType: sortType).then { json in
+    func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
+        return fetchAllFamiliesJSON(sortType: sortType).then { json in
             self.parseItemsFromJSON(json)
-        }.then { items in
-            items.map(GoogleFont.init)
+        }.then { items -> [GoogleFontFamily] in
+            let fonts = items.map(GoogleFontFamily.init)
+            fonts.forEach { font in
+                self.fontMapping[font.family] = font
+            }
+            return fonts
         }
     }
     
