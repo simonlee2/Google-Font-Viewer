@@ -12,7 +12,7 @@
 		F42A6B3E1EDAA0C0007A8F7B /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B3D1EDAA0C0007A8F7B /* Keys.swift */; };
 		F42A6B401EDAEC23007A8F7B /* GoogleFontAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B3F1EDAEC23007A8F7B /* GoogleFontAPI.swift */; };
 		F42A6B421EDB12D1007A8F7B /* GoogleFontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */; };
-		F42A6B441EDC38F3007A8F7B /* GoogleFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B431EDC38F3007A8F7B /* GoogleFontManager.swift */; };
+		F42A6B441EDC38F3007A8F7B /* GoogleFontDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */; };
 		F42A6B461EDD6189007A8F7B /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B451EDD6189007A8F7B /* FontManager.swift */; };
 		F42A6B481EDD73C9007A8F7B /* GoogleFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */; };
 		F4C94FF11EDA8A8C0022F1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */; };
@@ -43,7 +43,7 @@
 		F42A6B3D1EDAA0C0007A8F7B /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		F42A6B3F1EDAEC23007A8F7B /* GoogleFontAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontAPI.swift; sourceTree = "<group>"; };
 		F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontFamily.swift; sourceTree = "<group>"; };
-		F42A6B431EDC38F3007A8F7B /* GoogleFontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontManager.swift; sourceTree = "<group>"; };
+		F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontDownloader.swift; sourceTree = "<group>"; };
 		F42A6B451EDD6189007A8F7B /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFont.swift; sourceTree = "<group>"; };
 		F4C94FED1EDA8A8C0022F1F1 /* Google Font Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Font Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +116,7 @@
 				F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */,
 				F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */,
 				F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */,
-				F42A6B431EDC38F3007A8F7B /* GoogleFontManager.swift */,
+				F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */,
 				F42A6B451EDD6189007A8F7B /* FontManager.swift */,
 				F4C94FF41EDA8A8C0022F1F1 /* Main.storyboard */,
 				F4C94FF71EDA8A8C0022F1F1 /* Assets.xcassets */,
@@ -356,7 +356,7 @@
 				F42A6B3E1EDAA0C0007A8F7B /* Keys.swift in Sources */,
 				F4C94FF11EDA8A8C0022F1F1 /* AppDelegate.swift in Sources */,
 				F42A6B421EDB12D1007A8F7B /* GoogleFontFamily.swift in Sources */,
-				F42A6B441EDC38F3007A8F7B /* GoogleFontManager.swift in Sources */,
+				F42A6B441EDC38F3007A8F7B /* GoogleFontDownloader.swift in Sources */,
 				F42A6B481EDD73C9007A8F7B /* GoogleFont.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

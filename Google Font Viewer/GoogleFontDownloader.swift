@@ -12,7 +12,7 @@ import SwiftyJSON
 
 typealias SortType = GoogleFontAPI.Endpoints.SortType
 
-class GoogleFontManager {
+class GoogleFontDownloader {
     var api: GoogleFontAPI
     var fontMapping: [String: GoogleFontFamily]
     
