@@ -25,7 +25,7 @@ class GoogleFontDownloader {
         return fontMapping[family]?.font(withVariant: variant)
     }
     
-    func fetchAllFamiliesJSON(sortType: SortType? = nil) -> Promise<JSON> {
+    private func fetchAllFamiliesJSON(sortType: SortType? = nil) -> Promise<JSON> {
         return Promise { fulfill, reject in
             api.request(endpoint: .webfonts(sortType)).responseJSON { response in
                 switch response.result {
@@ -51,7 +51,7 @@ class GoogleFontDownloader {
         }
     }
     
-    func parseItemsFromJSON(_ json: JSON) -> [JSON] {
+    private func parseItemsFromJSON(_ json: JSON) -> [JSON] {
         return json["items"].arrayValue
     }
 }

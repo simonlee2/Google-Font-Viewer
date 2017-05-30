@@ -12,29 +12,20 @@ import PromiseKit
 import Alamofire
 
 class ViewController: UIViewController {
-    let downloader = GoogleFontDownloader()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let fontManager = FontManager()
-        
-        downloader.fetchAllFamilies().then { families -> Void in
-            if let font = self.downloader.font(family: "Noto Sans", variant: "regular") {
-                
-                fontManager.font(for: font, size: 12).then { uifont in
-                    print("success? \(String(describing: uifont))")
-                }.catch { error in
-                    print(error)
-                }
+    
+        Fonts.shared.font(for: "Noto Sans", size: 12).then { uifont -> Void in
+            if let notoSans = uifont {
+                print(notoSans)
             }
-            
-            
+            print("no font found")
         }.catch { error in
             print(error)
         }
-        
+
     }
 
     override func didReceiveMemoryWarning() {
