@@ -10,9 +10,14 @@ import UIKit
 import PromiseKit
 
 class Fonts {
+    // Single shared instance
     static let shared = Fonts()
-    let downloader: GoogleFontDownloader
+    
+    // Private instances to manage the downloading and registration of fonts
+    private let downloader: GoogleFontDownloader
     private let manager: FontManager
+    
+    // Keep track of on-going font tasks
     var tasks: [String: FontTask] = [:]
     
     var fontFamilies: [String] {
@@ -40,13 +45,13 @@ class Fonts {
         
         let (promise, cancel) = getFont()
         
-        if downloader.fontMapping.isEmpty {
-            return (firstly {
-                fetchAllFamilies()
-            }.then { _ in
-                return promise
-            }, cancel)
-        }
+//        if downloader.fontMapping.isEmpty {
+//            return (firstly {
+//                fetchAllFamilies()
+//            }.then { _ in
+//                return promise
+//            }, cancel)
+//        }
         
         return (promise, cancel)
     }
@@ -54,11 +59,4 @@ class Fonts {
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
         return downloader.fetchAllFamilies(sortType: sortType)
     }
-}
-
-struct FontTask {
-    let family: String
-    let variant: String
-    let promise: Promise<UIFont?>
-    let cancel: (() -> Void)?
 }

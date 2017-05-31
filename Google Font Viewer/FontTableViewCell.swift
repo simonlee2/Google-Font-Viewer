@@ -20,9 +20,7 @@ class FontTableViewCell: UITableViewCell {
         self.task = fontTask
         
         fontTask.promise.then { [weak self] uifont -> Void in
-            if uifont == nil {
-                print("nooooo")
-            }
+            
             self?.textLabel?.font = uifont
             self?.textLabel?.text = uifont?.familyName
             
