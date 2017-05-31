@@ -21,17 +21,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZwN-lN-d6l">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZwN-lN-d6l">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="5xp-cS-lFw" customClass="FontTableViewCell" customModule="Google_Font_Viewer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="5xp-cS-lFw" customClass="FontTableViewCell" customModule="Google_Font_Viewer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5xp-cS-lFw" id="1fe-fp-YlY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0B-e4-Mfc">
+                                                    <rect key="frame" x="32" y="10" width="311" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pQE-fo-Cca">
+                                                            <rect key="frame" x="16" y="8" width="279" height="44"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="pQE-fo-Cca" secondAttribute="trailing" constant="16" id="Au0-EX-U1P"/>
+                                                        <constraint firstItem="pQE-fo-Cca" firstAttribute="top" secondItem="i0B-e4-Mfc" secondAttribute="top" constant="8" id="TG0-0H-w96"/>
+                                                        <constraint firstItem="pQE-fo-Cca" firstAttribute="leading" secondItem="i0B-e4-Mfc" secondAttribute="leading" constant="16" id="ZHU-BE-1VY"/>
+                                                        <constraint firstAttribute="height" constant="60" id="nHv-FD-zkS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="pQE-fo-Cca" secondAttribute="bottom" constant="8" id="tFm-9Z-Kzh"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="i0B-e4-Mfc" firstAttribute="centerY" secondItem="1fe-fp-YlY" secondAttribute="centerY" id="F9o-o4-bdB"/>
+                                                <constraint firstAttribute="trailing" secondItem="i0B-e4-Mfc" secondAttribute="trailing" constant="32" id="kjw-GV-SUS"/>
+                                                <constraint firstItem="i0B-e4-Mfc" firstAttribute="leading" secondItem="1fe-fp-YlY" secondAttribute="leading" constant="32" id="lGc-Fi-GDP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fontBackgroundView" destination="i0B-e4-Mfc" id="Tv8-cW-9cn"/>
+                                            <outlet property="fontLabel" destination="pQE-fo-Cca" id="HqH-QX-eyT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
