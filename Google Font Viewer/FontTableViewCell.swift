@@ -10,7 +10,7 @@ import UIKit
 import PromiseKit
 
 class FontTableViewCell: UITableViewCell {
-    let fontSize: CGFloat = 20
+    let fontSize: CGFloat = 30
     var cancel: (() -> Void)?
     
     func configure(for family: String) {

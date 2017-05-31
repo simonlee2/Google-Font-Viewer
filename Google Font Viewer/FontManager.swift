@@ -57,10 +57,8 @@ class FontManager {
     private func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
         let provider = CGDataProvider(data: data)
         let cgfont = CGFont(provider!)
-        var err: Unmanaged<CFError>?
         
-        guard CTFontManagerRegisterGraphicsFont(cgfont, &err) else {
-            print("Cannot load \(font.name)")
+        guard CTFontManagerRegisterGraphicsFont(cgfont, nil) else {
             return false
         }
         
