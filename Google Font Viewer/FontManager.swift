@@ -22,28 +22,17 @@ class FontManager {
             return (Promise(value: UIFont(name: postScriptName, size: size)), {})
         }
         
-        let (promise, cancel) = test(font: font)
+        let (promise, cancel) = downloadFont(font: font)
         
-        return (promise.then { data in
-            self.registerFont(font, data: data as CFData)
-        }.then { _ -> UIFont? in
-            if let postScriptName = self.postScriptNameMapping[font.name] {
+        return (promise.then { [weak self] data in
+            self?.registerFont(font, data: data as CFData)
+        }.then { [weak self] _ -> UIFont? in
+            if let postScriptName = self?.postScriptNameMapping[font.name] {
                 return UIFont(name: postScriptName, size: size)
             } else {
                 return nil
             }
-        },
-        cancel
-        )
-        
-        
-//        return loadFont(font: font).then { (success) -> UIFont? in
-//            if let postScriptName = self.postScriptNameMapping[font.name] {
-//                return UIFont(name: postScriptName, size: size)
-//            } else {
-//                return nil
-//            }
-//        }
+        }, cancel)
     }
     
     func test(font: GoogleFont) -> (Promise<Data>, () -> Void) {
@@ -51,9 +40,10 @@ class FontManager {
         return (request.responseData(), request.cancel)
     }
     
-    private func downloadFont(font: GoogleFont) -> Promise<Data> {
-        return Promise { fulfill, reject in
-            Alamofire.request(font.externalDocumentURL).responseData(queue: DispatchQueue(label: "font")) { response in
+    private func downloadFont(font: GoogleFont) -> (Promise<Data>, () -> Void) {
+        let request = Alamofire.request(font.externalDocumentURL)
+        return (Promise { fulfill, reject in
+            request.responseData(queue: DispatchQueue(label: "font")) { response in
                 switch response.result {
                 case .success:
                     fulfill(response.data!)
@@ -61,7 +51,7 @@ class FontManager {
                     reject(error)
                 }
             }
-        }
+        }, request.cancel)
     }
     
     private func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
