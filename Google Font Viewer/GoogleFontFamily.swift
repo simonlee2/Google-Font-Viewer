@@ -37,7 +37,7 @@ struct GoogleFontFamily {
     }
     
     func font(withVariant variant: String) -> GoogleFont? {
-        guard let file = files[variant] else { return nil }
+        guard let file = files[variant] ?? files.first?.value else { return nil }
         
         return GoogleFont(family: family, variant: variant, externalDocumentURL: file)
     }

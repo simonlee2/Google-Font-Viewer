@@ -10,11 +10,9 @@ import UIKit
 
 class FontsTableViewDataSource: NSObject, UITableViewDataSource {
     var families: [String] = []
-    var cancels: [(() -> Void)?]
     
     init(families: [String] = []){
         self.families = families
-        self.cancels = Array(repeating: nil, count: families.count)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -24,7 +22,13 @@ class FontsTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FontTableViewCell
         
-        cell.configure(for: families[indexPath.row])
+        
+        let family = families[indexPath.row]
+        let task = Fonts.shared.tasks[family] ?? Fonts.shared.task(for: family, variant: "regular", size: 30)
+        Fonts.shared.tasks[family] = task
+        print("Configuring \(indexPath) for \(family)")
+        cell.configure(for: task)
+        
         return cell
     }
     
@@ -36,21 +40,28 @@ class FontsTableViewDataSource: NSObject, UITableViewDataSource {
 extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            let (promise, cancel) = Fonts.shared.font(for: families[indexPath.row], size: 20)
-            promise.then { uifont in
-                print("Prefetched \(String(describing: uifont?.fontName))")
+            let family = families[indexPath.row]
+            let task = Fonts.shared.tasks[family] ?? Fonts.shared.task(for: family, variant: "regular", size: 30)
+            Fonts.shared.tasks[family] = task
+            
+            task.promise.then { uifont -> Void in
+                if uifont == nil {
+                    print("Failed to get \(family)")
+                }
+                
+//                print("Prefetched \(String(describing: uifont?.fontName))")
             }.catch{ error in
                 print(error)
             }
-            
-            cancels[indexPath.row] = cancel
         }
     }
     
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            if let cancel = cancels[indexPath.row] {
-                cancel()
+            let family = families[indexPath.row]
+            if let task = Fonts.shared.tasks[family] {
+                task.cancel?()
+                Fonts.shared.tasks[family] = nil
             }
         }
     }

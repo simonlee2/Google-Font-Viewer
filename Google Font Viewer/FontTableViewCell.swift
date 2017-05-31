@@ -11,18 +11,20 @@ import PromiseKit
 
 class FontTableViewCell: UITableViewCell {
     let fontSize: CGFloat = 30
-    var cancel: (() -> Void)?
+    var task: FontTask?
     
-    func configure(for family: String) {
+    func configure(for fontTask: FontTask) {
         textLabel?.text = ""
         textLabel?.alpha = 0
         
-        let (fontPromise, cancel) = Fonts.shared.font(for: family, size: fontSize)
-        self.cancel = cancel
+        self.task = fontTask
         
-        fontPromise.then { [weak self] uifont -> Void in
+        fontTask.promise.then { [weak self] uifont -> Void in
+            if uifont == nil {
+                print("nooooo")
+            }
             self?.textLabel?.font = uifont
-            self?.textLabel?.text = family
+            self?.textLabel?.text = uifont?.familyName
             
             UIView.animate(withDuration: 0.3) {
                 self?.textLabel?.alpha = 1
@@ -35,7 +37,10 @@ class FontTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        cancel?()
+        if let task = task {
+            task.cancel?()
+            Fonts.shared.tasks[task.family] = nil
+        }
         
         textLabel?.text = ""
         textLabel?.alpha = 0

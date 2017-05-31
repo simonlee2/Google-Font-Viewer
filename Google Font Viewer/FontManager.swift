@@ -17,7 +17,6 @@ class FontManager {
     }
     
     func font(for font: GoogleFont, size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
-        // look in postscriptnamemapping
         if let postScriptName = postScriptNameMapping[font.name] {
             return (Promise(value: UIFont(name: postScriptName, size: size)), {})
         }
@@ -35,12 +34,11 @@ class FontManager {
         }, cancel)
     }
     
-    func test(font: GoogleFont) -> (Promise<Data>, () -> Void) {
-        let request = Alamofire.request(font.externalDocumentURL)
-        return (request.responseData(), request.cancel)
-    }
-    
-    private func downloadFont(font: GoogleFont) -> (Promise<Data>, () -> Void) {
+}
+
+extension FontManager {
+
+    internal func downloadFont(font: GoogleFont) -> (Promise<Data>, () -> Void) {
         let request = Alamofire.request(font.externalDocumentURL)
         return (Promise { fulfill, reject in
             request.responseData(queue: DispatchQueue(label: "font")) { response in
@@ -54,11 +52,13 @@ class FontManager {
         }, request.cancel)
     }
     
-    private func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
+    internal func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
         let provider = CGDataProvider(data: data)
         let cgfont = CGFont(provider!)
+        var error: Unmanaged<CFError>?
         
-        guard CTFontManagerRegisterGraphicsFont(cgfont, nil) else {
+        guard CTFontManagerRegisterGraphicsFont(cgfont, &error) else {
+//            print(error)
             return false
         }
         
@@ -68,7 +68,6 @@ class FontManager {
         }
         
         postScriptNameMapping[font.name] = postScriptName
-        print("Loaded \(cgfont.postScriptName ?? font.name as CFString)")
         
         return true
     }

@@ -11,21 +11,30 @@ import PromiseKit
 
 class Fonts {
     static let shared = Fonts()
-    private let downloader: GoogleFontDownloader
+    let downloader: GoogleFontDownloader
     private let manager: FontManager
+    var tasks: [String: FontTask] = [:]
     
+    var fontFamilies: [String] {
+        return Array(downloader.fontMapping.keys.sorted())
+    }
     
     private init() {
         downloader = GoogleFontDownloader()
         manager = FontManager()
     }
     
-    func font(for family: String, size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
+    func task(for family: String, variant: String = "regular", size: CGFloat) -> FontTask {
+        let (promise, cancel) = font(for: family, size: size)
+        return FontTask(family: family, variant: variant, promise: promise, cancel: cancel)
+    }
+    
+    func font(for family: String, variant: String = "regular", size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
         let getFont: () -> (Promise<UIFont?>, () -> Void) = {
-            if let font = self.downloader.font(family: family, variant: "regular") {
+            if let font = self.downloader.font(family: family, variant: variant) {
                 return self.manager.font(for: font, size: size)
             }
-            
+            print("No font mapping for \(family) \(variant)")
             return (Promise(value: nil), {})
         }
         
@@ -45,8 +54,11 @@ class Fonts {
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
         return downloader.fetchAllFamilies(sortType: sortType)
     }
-    
-    var fontFamilies: [String] {
-        return Array(downloader.fontMapping.keys.sorted())
-    }
+}
+
+struct FontTask {
+    let family: String
+    let variant: String
+    let promise: Promise<UIFont?>
+    let cancel: (() -> Void)?
 }
