@@ -15,8 +15,17 @@ class FontTableViewCell: UITableViewCell {
     @IBOutlet weak var fontLabel: UILabel!
     @IBOutlet weak var fontBackgroundView: UIView! {
         didSet {
+            // round corners
             fontBackgroundView.layer.cornerRadius = 5.0
-            fontBackgroundView.clipsToBounds = true
+//            fontBackgroundView.clipsToBounds = true
+            
+            // shadows
+            fontBackgroundView.layer.shadowColor = UIColor.black.cgColor
+            fontBackgroundView.layer.shadowOpacity = 0.1
+            fontBackgroundView.layer.shadowRadius = 3
+            fontBackgroundView.layer.shadowOffset = CGSize.zero
+            fontBackgroundView.layer.shadowPath = UIBezierPath(rect: fontBackgroundView.bounds).cgPath
+            
         }
     }
     
