@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xlu-26-sW8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="217-iX-XFx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,32 +10,66 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="Uej-ie-vSq">
+        <scene sceneID="cF8-ok-va5">
             <objects>
-                <tableViewController id="xlu-26-sW8" customClass="ViewController" customModule="Google_Font_Viewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IQl-Us-0IE">
+                <viewController id="sfC-QC-Zpz" customClass="ViewController" customModule="Google_Font_Viewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6MN-4a-a0N"/>
+                        <viewControllerLayoutGuide type="bottom" id="VM7-6Z-cm2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gdx-US-ojl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZwN-lN-d6l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="5xp-cS-lFw" customClass="FontTableViewCell" customModule="Google_Font_Viewer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5xp-cS-lFw" id="1fe-fp-YlY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ANB-r8-vyb" customClass="FontTableViewCell" customModule="Google_Font_Viewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ANB-r8-vyb" id="cjD-KO-Hdz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="xlu-26-sW8" id="5WO-8M-MJP"/>
-                            <outlet property="delegate" destination="xlu-26-sW8" id="VDd-wg-Pnb"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="buG-XB-0J1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="ZwN-lN-d6l" firstAttribute="top" secondItem="Gdx-US-ojl" secondAttribute="top" id="8iO-VD-zNV"/>
+                            <constraint firstAttribute="trailing" secondItem="ZwN-lN-d6l" secondAttribute="trailing" id="pxd-E1-tSd"/>
+                            <constraint firstItem="ZwN-lN-d6l" firstAttribute="leading" secondItem="Gdx-US-ojl" secondAttribute="leading" id="vlz-40-Y5X"/>
+                            <constraint firstItem="ZwN-lN-d6l" firstAttribute="bottom" secondItem="VM7-6Z-cm2" secondAttribute="top" id="xIQ-30-d6a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="T4W-ko-Oyg"/>
+                    <connections>
+                        <outlet property="tableView" destination="ZwN-lN-d6l" id="E9C-gk-eO3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOT-mD-FmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89" y="91"/>
+            <point key="canvasLocation" x="1304.8" y="101.19940029985008"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6ZJ-6L-vA4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="217-iX-XFx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MBW-A5-njr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sfC-QC-Zpz" kind="relationship" relationship="rootViewController" id="HbY-ql-5r4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="98E-a5-V5O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="365.60000000000002" y="100.29985007496252"/>
         </scene>
     </scenes>
 </document>
