@@ -16,27 +16,51 @@ class FontManager {
         self.postScriptNameMapping = postScriptNameMapping
     }
     
-    func font(for font: GoogleFont, size: CGFloat) -> Promise<UIFont?> {
+    func font(for font: GoogleFont, size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
         // look in postscriptnamemapping
         if let postScriptName = postScriptNameMapping[font.name] {
-            return Promise { fulfill, _ in
-                fulfill(UIFont(name: postScriptName, size: size))
-            }
+            return (Promise(value: UIFont(name: postScriptName, size: size)), {})
         }
         
-        return loadFont(font: font).then { (success) -> UIFont? in
+        let (promise, cancel) = test(font: font)
+        
+        return (promise.then { data in
+            self.registerFont(font, data: data as CFData)
+        }.then { _ -> UIFont? in
             if let postScriptName = self.postScriptNameMapping[font.name] {
                 return UIFont(name: postScriptName, size: size)
             } else {
                 return nil
             }
-        }
+        },
+        cancel
+        )
+        
+        
+//        return loadFont(font: font).then { (success) -> UIFont? in
+//            if let postScriptName = self.postScriptNameMapping[font.name] {
+//                return UIFont(name: postScriptName, size: size)
+//            } else {
+//                return nil
+//            }
+//        }
     }
     
-    private func loadFont(font: GoogleFont) -> Promise<Bool> {
-        //TODO: Request goes through GoogleFontAPI
-        return Alamofire.request(font.externalDocumentURL).responseData().then { data in
-            self.registerFont(font, data: data as CFData)
+    func test(font: GoogleFont) -> (Promise<Data>, () -> Void) {
+        let request = Alamofire.request(font.externalDocumentURL)
+        return (request.responseData(), request.cancel)
+    }
+    
+    private func downloadFont(font: GoogleFont) -> Promise<Data> {
+        return Promise { fulfill, reject in
+            Alamofire.request(font.externalDocumentURL).responseData(queue: DispatchQueue(label: "font")) { response in
+                switch response.result {
+                case .success:
+                    fulfill(response.data!)
+                case .failure(let error):
+                    reject(error)
+                }
+            }
         }
     }
     
@@ -61,17 +85,17 @@ class FontManager {
         return true
     }
     
-    private func downloadFont(url: String) {
-        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            
-            documentsURL.appendPathComponent("font.ttf")
-            return (documentsURL, [.removePreviousFile])
-            
-        }
-        
-        Alamofire.download(url, to: destination).response { response in
-            print(response.destinationURL ?? "")
-        }
-    }
+//    private func downloadFont(url: String) {
+//        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+//            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//            
+//            documentsURL.appendPathComponent("font.ttf")
+//            return (documentsURL, [.removePreviousFile])
+//            
+//        }
+//        
+//        Alamofire.download(url, to: destination).response { response in
+//            print(response.destinationURL ?? "")
+//        }
+//    }
 }

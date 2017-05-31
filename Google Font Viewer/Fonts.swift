@@ -20,22 +20,26 @@ class Fonts {
         manager = FontManager()
     }
     
-    func font(for family: String, size: CGFloat) -> Promise<UIFont?> {
-        let getFont: () -> Promise<UIFont?> = {
+    func font(for family: String, size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
+        let getFont: () -> (Promise<UIFont?>, () -> Void) = {
             if let font = self.downloader.font(family: family, variant: "regular") {
                 return self.manager.font(for: font, size: size)
             }
             
-            return Promise(value: nil)
+            return (Promise(value: nil), {})
         }
+        
+        let (promise, cancel) = getFont()
         
         if downloader.fontMapping.isEmpty {
-            return fetchAllFamilies().then { _ in
-                getFont()
-            }
+            return (firstly {
+                fetchAllFamilies()
+            }.then { _ in
+                return promise
+            }, cancel)
         }
         
-        return getFont()
+        return (promise, cancel)
     }
     
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
@@ -43,6 +47,6 @@ class Fonts {
     }
     
     var fontFamilies: [String] {
-        return Array(downloader.fontMapping.keys)
+        return Array(downloader.fontMapping.keys.sorted())
     }
 }

@@ -7,26 +7,37 @@
 //
 
 import UIKit
+import PromiseKit
 
 class FontTableViewCell: UITableViewCell {
     let fontSize: CGFloat = 20
+    var cancel: (() -> Void)?
     
     func configure(for family: String) {
-        Fonts.shared.font(for: family, size: fontSize).then { uifont -> Void in
-            self.textLabel?.font = uifont
-            self.textLabel?.text = family
+        textLabel?.text = ""
+        textLabel?.alpha = 0
+        
+        let (fontPromise, cancel) = Fonts.shared.font(for: family, size: fontSize)
+        self.cancel = cancel
+        
+        fontPromise.then { [weak self] uifont -> Void in
+            self?.textLabel?.font = uifont
+            self?.textLabel?.text = family
+            
             UIView.animate(withDuration: 0.3) {
-                self.textLabel?.alpha = 1
+                self?.textLabel?.alpha = 1
             }
-            }.catch { error in
-                print(error)
+        }.catch { error in
+            print(error)
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        textLabel?.text = nil
+        cancel?()
+        
+        textLabel?.text = ""
         textLabel?.alpha = 0
     }
 }
