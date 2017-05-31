@@ -41,4 +41,8 @@ class Fonts {
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
         return downloader.fetchAllFamilies(sortType: sortType)
     }
+    
+    var fontFamilies: [String] {
+        return Array(downloader.fontMapping.keys)
+    }
 }
