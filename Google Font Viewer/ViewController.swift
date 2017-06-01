@@ -13,6 +13,14 @@ import Alamofire
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var recommendWifiView: UIView! {
+        didSet {
+            recommendWifiView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
+        }
+    }
+    
     @IBOutlet weak var confirmButton: UIButton! {
         didSet {
             confirmButton.layer.cornerRadius = 5.0
@@ -21,12 +29,7 @@ class ViewController: UIViewController {
             confirmButton.layer.borderColor = UIColor.black.cgColor
         }
     }
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var recommendWifiView: UIView! {
-        didSet {
-            recommendWifiView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
-        }
-    }
+    
     var dataSource: FontsTableViewDataSource?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +42,6 @@ class ViewController: UIViewController {
         
         // Set up table view
         self.tableView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
-        
     }
     
     override func viewDidLoad() {
@@ -50,18 +52,38 @@ class ViewController: UIViewController {
             self.dataSource = FontsTableViewDataSource(fonts: Fonts.shared.fontFamilies)
             self.tableView.prefetchDataSource = self.dataSource
             self.tableView.dataSource = self.dataSource
-//            self.tableView.reloadData()
+            self.tableView.delegate = self
         }.catch { error in
             print(error)
         }
-        
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
-        
         self.tableView.reloadData()
         UIView.animate(withDuration: 0.3) {
             self.recommendWifiView.alpha = 0
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case "FontFamilyDetail":
+            let vc = segue.destination as! FontFamilyDetailViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                vc.fontFamily = dataSource?.fonts[indexPath.row]
+            }
+        default:
+            break
+        }
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "FontFamilyDetail", sender: self)
     }
 }

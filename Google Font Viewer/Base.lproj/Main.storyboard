@@ -129,11 +129,30 @@ We recommend connecting to a Wi-Fi network before proceeding. </string>
                         <outlet property="confirmButton" destination="vfF-uq-b9h" id="Ndn-VT-wOR"/>
                         <outlet property="recommendWifiView" destination="Mj2-hg-igj" id="U7s-8j-iKw"/>
                         <outlet property="tableView" destination="ZwN-lN-d6l" id="E9C-gk-eO3"/>
+                        <segue destination="dti-Ba-5cO" kind="show" identifier="FontFamilyDetail" id="TLO-iK-7Bj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOT-mD-FmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304.8" y="101.19940029985008"/>
+            <point key="canvasLocation" x="1233" y="100"/>
+        </scene>
+        <!--Font Family Detail View Controller-->
+        <scene sceneID="yAK-Vr-ITM">
+            <objects>
+                <viewController id="dti-Ba-5cO" customClass="FontFamilyDetailViewController" customModule="Google_Font_Viewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1bR-vS-ceP"/>
+                        <viewControllerLayoutGuide type="bottom" id="O8Q-HE-elH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E5L-5l-7Co">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qt7-nO-uxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2070" y="102"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6ZJ-6L-vA4">
