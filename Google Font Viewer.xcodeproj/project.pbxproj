@@ -45,18 +45,18 @@
 		E2570EDB4B121A44870D5E2D /* Pods-Google Font Viewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Google Font Viewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Google Font Viewer/Pods-Google Font Viewer.debug.xcconfig"; sourceTree = "<group>"; };
 		E3A4D16AA68E2BA1A79FBB34 /* Pods_Google_Font_Viewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Google_Font_Viewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42A6B3D1EDAA0C0007A8F7B /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
-		F42A6B3F1EDAEC23007A8F7B /* GoogleFontAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontAPI.swift; sourceTree = "<group>"; };
-		F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontFamily.swift; sourceTree = "<group>"; };
-		F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFontDownloader.swift; sourceTree = "<group>"; };
-		F42A6B451EDD6189007A8F7B /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
-		F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleFont.swift; sourceTree = "<group>"; };
-		F42A6B4A1EDD9397007A8F7B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		F4C3D7261EDE5E33007299D3 /* FontsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontsTableViewDataSource.swift; sourceTree = "<group>"; };
-		F4C3D7281EDE5FB5007299D3 /* FontTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
-		F4C3D72A1EDEF0A8007299D3 /* FontTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTask.swift; sourceTree = "<group>"; };
+		F42A6B3F1EDAEC23007A8F7B /* GoogleFontAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleFontAPI.swift; path = "Google Font/GoogleFontAPI.swift"; sourceTree = "<group>"; };
+		F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleFontFamily.swift; path = "Google Font/GoogleFontFamily.swift"; sourceTree = "<group>"; };
+		F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleFontDownloader.swift; path = "Google Font/GoogleFontDownloader.swift"; sourceTree = "<group>"; };
+		F42A6B451EDD6189007A8F7B /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontManager.swift; path = "Font Management/FontManager.swift"; sourceTree = "<group>"; };
+		F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleFont.swift; path = "Google Font/GoogleFont.swift"; sourceTree = "<group>"; };
+		F42A6B4A1EDD9397007A8F7B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = "Font Management/Fonts.swift"; sourceTree = "<group>"; };
+		F4C3D7261EDE5E33007299D3 /* FontsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontsTableViewDataSource.swift; path = FontsTableViewController/FontsTableViewDataSource.swift; sourceTree = "<group>"; };
+		F4C3D7281EDE5FB5007299D3 /* FontTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontTableViewCell.swift; path = FontsTableViewController/FontTableViewCell.swift; sourceTree = "<group>"; };
+		F4C3D72A1EDEF0A8007299D3 /* FontTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontTask.swift; path = "Font Management/FontTask.swift"; sourceTree = "<group>"; };
 		F4C94FED1EDA8A8C0022F1F1 /* Google Font Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Font Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = FontsTableViewController/ViewController.swift; sourceTree = "<group>"; };
 		F4C94FF51EDA8A8C0022F1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4C94FF71EDA8A8C0022F1F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C94FFA1EDA8A8C0022F1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,6 +95,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F4292C171EE04ED200394270 /* Google Font */ = {
+			isa = PBXGroup;
+			children = (
+				F42A6B3F1EDAEC23007A8F7B /* GoogleFontAPI.swift */,
+				F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */,
+				F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */,
+				F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */,
+			);
+			name = "Google Font";
+			sourceTree = "<group>";
+		};
+		F4292C181EE04EE800394270 /* Fonts Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */,
+				F4C3D7281EDE5FB5007299D3 /* FontTableViewCell.swift */,
+				F4C3D7261EDE5E33007299D3 /* FontsTableViewDataSource.swift */,
+			);
+			name = "Fonts Table View Controller";
+			sourceTree = "<group>";
+		};
+		F4292C191EE04F1600394270 /* Font Management */ = {
+			isa = PBXGroup;
+			children = (
+				F42A6B4A1EDD9397007A8F7B /* Fonts.swift */,
+				F4C3D72A1EDEF0A8007299D3 /* FontTask.swift */,
+				F42A6B451EDD6189007A8F7B /* FontManager.swift */,
+			);
+			name = "Font Management";
+			sourceTree = "<group>";
+		};
 		F4C94FE41EDA8A8C0022F1F1 = {
 			isa = PBXGroup;
 			children = (
@@ -120,17 +151,10 @@
 			children = (
 				F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */,
 				F42A6B3D1EDAA0C0007A8F7B /* Keys.swift */,
-				F42A6B3F1EDAEC23007A8F7B /* GoogleFontAPI.swift */,
-				F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */,
-				F4C3D7281EDE5FB5007299D3 /* FontTableViewCell.swift */,
-				F42A6B4A1EDD9397007A8F7B /* Fonts.swift */,
-				F4C3D72A1EDEF0A8007299D3 /* FontTask.swift */,
-				F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */,
-				F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */,
-				F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */,
-				F42A6B451EDD6189007A8F7B /* FontManager.swift */,
+				F4292C171EE04ED200394270 /* Google Font */,
+				F4292C181EE04EE800394270 /* Fonts Table View Controller */,
+				F4292C191EE04F1600394270 /* Font Management */,
 				F4C94FF41EDA8A8C0022F1F1 /* Main.storyboard */,
-				F4C3D7261EDE5E33007299D3 /* FontsTableViewDataSource.swift */,
 				F4C94FF71EDA8A8C0022F1F1 /* Assets.xcassets */,
 				F4C94FF91EDA8A8C0022F1F1 /* LaunchScreen.storyboard */,
 				F4C94FFC1EDA8A8C0022F1F1 /* Info.plist */,
