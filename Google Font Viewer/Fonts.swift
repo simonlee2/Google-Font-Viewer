@@ -29,31 +29,33 @@ class Fonts {
         manager = FontManager()
     }
     
-    func task(for family: String, variant: String = "regular", size: CGFloat) -> FontTask {
-        let (promise, cancel) = font(for: family, size: size)
+    private func font(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
+        guard let font = self.downloader.font(family: family, variant: variant) else {
+            return nil
+        }
+        
+        let (promise, cancel) = self.manager.font(for: font, size: size)
         return FontTask(family: family, variant: variant, promise: promise, cancel: cancel)
     }
     
-    func font(for family: String, variant: String = "regular", size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
-        let getFont: () -> (Promise<UIFont?>, () -> Void) = {
-            if let font = self.downloader.font(family: family, variant: variant) {
-                return self.manager.font(for: font, size: size)
-            }
-            print("No font mapping for \(family) \(variant)")
-            return (Promise(value: nil), {})
+    // MARK: Add and remove tasks
+    
+    func task(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
+        let key = "\(family)-\(variant)"
+        let task = tasks[key] ?? font(for: family, variant: variant, size: size)
+        tasks[key] = task
+        return task
+    }
+    
+    @discardableResult func removeTask(for family: String, variant: String = "regular") -> FontTask? {
+        let key = "\(family)-\(variant)"
+        if let task = tasks[key] {
+            task.cancel?()
+            tasks[key] = nil
+            return task
         }
         
-        let (promise, cancel) = getFont()
-        
-//        if downloader.fontMapping.isEmpty {
-//            return (firstly {
-//                fetchAllFamilies()
-//            }.then { _ in
-//                return promise
-//            }, cancel)
-//        }
-        
-        return (promise, cancel)
+        return nil
     }
     
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {

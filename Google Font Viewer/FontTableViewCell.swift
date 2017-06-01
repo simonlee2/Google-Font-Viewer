@@ -51,14 +51,14 @@ class FontTableViewCell: UITableViewCell {
         
     }
     
-    func configure(for fontTask: FontTask) {
+    func configure(for fontTask: FontTask?) {
         fontLabel?.text = ""
         fontLabel?.alpha = 0
         layer.backgroundColor = UIColor.clear.cgColor
         
-        self.task = fontTask
+        task = fontTask
         
-        fontTask.promise.then { [weak self] uifont -> Void in
+        task?.promise.then { [weak self] uifont -> Void in
             
             self?.fontLabel?.font = uifont
             self?.fontLabel?.text = uifont?.familyName
@@ -75,8 +75,7 @@ class FontTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         if let task = task {
-            task.cancel?()
-            Fonts.shared.tasks[task.family] = nil
+            Fonts.shared.removeTask(for: task.family, variant: task.variant)
         }
         
         fontLabel?.text = ""

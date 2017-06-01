@@ -24,9 +24,7 @@ class FontsTableViewDataSource: NSObject, UITableViewDataSource {
         
         
         let family = families[indexPath.row]
-        let task = Fonts.shared.tasks[family] ?? Fonts.shared.task(for: family, variant: "regular", size: 20)
-        Fonts.shared.tasks[family] = task
-        print("Configuring \(indexPath) for \(family)")
+        let task = Fonts.shared.task(for: family, size: 20)
         cell.configure(for: task)
         
         return cell
@@ -41,15 +39,12 @@ extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             let family = families[indexPath.row]
-            let task = Fonts.shared.tasks[family] ?? Fonts.shared.task(for: family, variant: "regular", size: 20)
-            Fonts.shared.tasks[family] = task
+            let task = Fonts.shared.task(for: family, size: 20)
             
-            task.promise.then { uifont -> Void in
+            task?.promise.then { uifont -> Void in
                 if uifont == nil {
-                    print("Failed to get \(family)")
+                    print("Failed to prefetch \(family)")
                 }
-                
-//                print("Prefetched \(String(describing: uifont?.fontName))")
             }.catch{ error in
                 print(error)
             }
@@ -59,10 +54,7 @@ extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             let family = families[indexPath.row]
-            if let task = Fonts.shared.tasks[family] {
-                task.cancel?()
-                Fonts.shared.tasks[family] = nil
-            }
+            Fonts.shared.removeTask(for: family)
         }
     }
 }
