@@ -14,11 +14,30 @@ class Fonts {
     static let shared = Fonts()
     
     // Private instances to manage the downloading and registration of fonts
-    private let downloader: GoogleFontDownloader
-    private let manager: FontManager
+    internal let downloader: GoogleFontDownloader
+    internal let manager: FontManager
     
     // Keep track of on-going font tasks
-    var tasks: [String: FontTask] = [:]
+    internal var tasks: [String: FontTask] = [:]
+    
+    private init() {
+        downloader = GoogleFontDownloader()
+        manager = FontManager()
+    }
+    
+    internal func font(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
+        guard let font = self.downloader.font(family: family, variant: variant) else {
+            return nil
+        }
+        
+        let (promise, cancel) = self.manager.font(for: font, size: size)
+        return FontTask(family: family, variant: variant, promise: promise, cancel: cancel)
+    }
+}
+
+
+// Public API
+extension Fonts {
     
     // Take one font for each available family, prioritizing regular variants
     var fontFamilies: [GoogleFont] {
@@ -29,20 +48,6 @@ class Fonts {
         return families.flatMap { family in
             downloader.font(family: family.family, variant: "regular")
         }
-    }
-    
-    private init() {
-        downloader = GoogleFontDownloader()
-        manager = FontManager()
-    }
-    
-    private func font(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
-        guard let font = self.downloader.font(family: family, variant: variant) else {
-            return nil
-        }
-        
-        let (promise, cancel) = self.manager.font(for: font, size: size)
-        return FontTask(family: family, variant: variant, promise: promise, cancel: cancel)
     }
     
     // MARK: Add and remove tasks
