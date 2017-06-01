@@ -13,7 +13,20 @@ import Alamofire
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var confirmButton: UIButton! {
+        didSet {
+            confirmButton.layer.cornerRadius = 5.0
+            
+            confirmButton.layer.borderWidth = 2.0
+            confirmButton.layer.borderColor = UIColor.black.cgColor
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var recommendWifiView: UIView! {
+        didSet {
+            recommendWifiView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
+        }
+    }
     var dataSource: FontsTableViewDataSource?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,10 +50,18 @@ class ViewController: UIViewController {
             self.dataSource = FontsTableViewDataSource(fonts: Fonts.shared.fontFamilies)
             self.tableView.prefetchDataSource = self.dataSource
             self.tableView.dataSource = self.dataSource
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         }.catch { error in
             print(error)
         }
         
+    }
+    
+    @IBAction func confirmButtonPressed(_ sender: Any) {
+        
+        self.tableView.reloadData()
+        UIView.animate(withDuration: 0.3) {
+            self.recommendWifiView.alpha = 0
+        }
     }
 }

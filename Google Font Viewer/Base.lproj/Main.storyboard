@@ -65,10 +65,60 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mj2-hg-igj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NTZ-V3-Thz">
+                                        <rect key="frame" x="40" y="100" width="295" height="403"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi" translatesAutoresizingMaskIntoConstraints="NO" id="ihC-cC-EfI">
+                                                <rect key="frame" x="122.5" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="PuG-ah-3QM"/>
+                                                    <constraint firstAttribute="height" constant="50" id="reB-J3-Sz8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atv-Tc-ybD">
+                                                <rect key="frame" x="0.0" y="50" width="295" height="309"/>
+                                                <string key="text">The app will download fonts over the network. 
+
+We recommend connecting to a Wi-Fi network before proceeding. </string>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-uq-b9h">
+                                                <rect key="frame" x="70.5" y="359" width="154" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="pPn-PY-dlN"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                                <state key="normal" title="  Roger that!  ">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmButtonPressed:" destination="sfC-QC-Zpz" eventType="touchUpInside" id="zKc-3F-Lyr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NTZ-V3-Thz" firstAttribute="top" secondItem="Mj2-hg-igj" secondAttribute="top" constant="100" id="B1D-9d-gb2"/>
+                                    <constraint firstItem="NTZ-V3-Thz" firstAttribute="leading" secondItem="Mj2-hg-igj" secondAttribute="leading" constant="40" id="Fb7-We-hdq"/>
+                                    <constraint firstAttribute="trailing" secondItem="NTZ-V3-Thz" secondAttribute="trailing" constant="40" id="KmB-ee-Kcr"/>
+                                    <constraint firstAttribute="bottom" secondItem="NTZ-V3-Thz" secondAttribute="bottom" constant="100" id="dfL-YN-uOh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mj2-hg-igj" firstAttribute="leading" secondItem="Gdx-US-ojl" secondAttribute="leading" id="1yu-VQ-fji"/>
                             <constraint firstItem="ZwN-lN-d6l" firstAttribute="top" secondItem="Gdx-US-ojl" secondAttribute="top" id="8iO-VD-zNV"/>
+                            <constraint firstItem="VM7-6Z-cm2" firstAttribute="top" secondItem="Mj2-hg-igj" secondAttribute="bottom" id="PiW-kB-De7"/>
+                            <constraint firstAttribute="trailing" secondItem="Mj2-hg-igj" secondAttribute="trailing" id="Tgj-Ls-h4e"/>
+                            <constraint firstItem="Mj2-hg-igj" firstAttribute="top" secondItem="6MN-4a-a0N" secondAttribute="bottom" id="cts-yd-XKL"/>
                             <constraint firstAttribute="trailing" secondItem="ZwN-lN-d6l" secondAttribute="trailing" id="pxd-E1-tSd"/>
                             <constraint firstItem="ZwN-lN-d6l" firstAttribute="leading" secondItem="Gdx-US-ojl" secondAttribute="leading" id="vlz-40-Y5X"/>
                             <constraint firstItem="ZwN-lN-d6l" firstAttribute="bottom" secondItem="VM7-6Z-cm2" secondAttribute="top" id="xIQ-30-d6a"/>
@@ -76,6 +126,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="T4W-ko-Oyg"/>
                     <connections>
+                        <outlet property="confirmButton" destination="vfF-uq-b9h" id="Ndn-VT-wOR"/>
+                        <outlet property="recommendWifiView" destination="Mj2-hg-igj" id="U7s-8j-iKw"/>
                         <outlet property="tableView" destination="ZwN-lN-d6l" id="E9C-gk-eO3"/>
                     </connections>
                 </viewController>
@@ -102,4 +154,7 @@
             <point key="canvasLocation" x="365.60000000000002" y="100.29985007496252"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="wifi" width="50" height="50"/>
+    </resources>
 </document>
