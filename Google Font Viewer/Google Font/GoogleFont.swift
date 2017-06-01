@@ -12,7 +12,6 @@ struct GoogleFont {
     let family: String
     let variant: String
     let externalDocumentURL: String
-    //    let internalDocumentURL: String
     var name: String {
         return "\(family)-\(variant)"
     }

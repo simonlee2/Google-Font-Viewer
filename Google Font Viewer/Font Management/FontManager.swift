@@ -71,18 +71,4 @@ extension FontManager {
         
         return true
     }
-    
-//    private func downloadFont(url: String) {
-//        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
-//            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//            
-//            documentsURL.appendPathComponent("font.ttf")
-//            return (documentsURL, [.removePreviousFile])
-//            
-//        }
-//        
-//        Alamofire.download(url, to: destination).response { response in
-//            print(response.destinationURL ?? "")
-//        }
-//    }
 }
