@@ -25,13 +25,9 @@ class Fonts {
         manager = FontManager()
     }
     
-    internal func font(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
-        guard let font = self.downloader.font(family: family, variant: variant) else {
-            return nil
-        }
-        
+    internal func fontTask(for font: GoogleFont, size: CGFloat) -> FontTask? {
         let (promise, cancel) = self.manager.font(for: font, size: size)
-        return FontTask(family: family, variant: variant, promise: promise, cancel: cancel)
+        return FontTask(family: font.family, variant: font.variant, promise: promise, cancel: cancel)
     }
 }
 
@@ -52,10 +48,9 @@ extension Fonts {
     
     // MARK: Add and remove tasks
     
-    func addTask(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
-        let key = "\(family)-\(variant)"
-        let task = tasks[key] ?? font(for: family, variant: variant, size: size)
-        tasks[key] = task
+    func addTask(for font: GoogleFont, size: CGFloat) -> FontTask? {
+        let task = tasks[font.name] ?? fontTask(for: font, size: size)
+        tasks[font.name] = task
         return task
     }
     
