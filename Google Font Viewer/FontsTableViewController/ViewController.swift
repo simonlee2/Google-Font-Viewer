@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var confirmButton: UIButton! {
         didSet {
+            // round corners
             confirmButton.layer.cornerRadius = 5.0
             
+            // add border outline
             confirmButton.layer.borderWidth = 2.0
             confirmButton.layer.borderColor = UIColor.black.cgColor
         }
@@ -27,6 +29,7 @@ class ViewController: UIViewController {
             recommendWifiView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
         }
     }
+    
     var dataSource: FontsTableViewDataSource?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +53,6 @@ class ViewController: UIViewController {
             self.dataSource = FontsTableViewDataSource(fonts: Fonts.shared.fontFamilies)
             self.tableView.prefetchDataSource = self.dataSource
             self.tableView.dataSource = self.dataSource
-//            self.tableView.reloadData()
         }.catch { error in
             print(error)
         }
