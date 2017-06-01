@@ -43,8 +43,11 @@ class GoogleFontDownloader {
             api.request(endpoint: .webfonts(sortType)).responseJSON { response in
                 switch response.result {
                 case .success:
-                    guard let data = response.data else { return }
-                    fulfill(JSON(data))
+                    if let data = response.data {
+                        fulfill(JSON(data))
+                    } else {
+                        reject(Errors.invalidData)
+                    }
                 case .failure(let error):
                     reject(error)
                 }
