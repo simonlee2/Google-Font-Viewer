@@ -68,3 +68,6 @@ fastlane/test_output
 
 # private files
 Keys.swift
+
+# mac
+.DS_Store
