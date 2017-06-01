@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         // Set up table view
         Fonts.shared.fetchAllFamilies().then { _ -> Void in
-            self.dataSource = FontsTableViewDataSource(families: Fonts.shared.fontFamilies)
+            self.dataSource = FontsTableViewDataSource(fonts: Fonts.shared.fontFamilies)
             self.tableView.prefetchDataSource = self.dataSource
             self.tableView.dataSource = self.dataSource
             self.tableView.reloadData()

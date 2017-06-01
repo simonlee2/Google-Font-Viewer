@@ -20,8 +20,15 @@ class Fonts {
     // Keep track of on-going font tasks
     var tasks: [String: FontTask] = [:]
     
-    var fontFamilies: [String] {
-        return Array(downloader.fontMapping.keys.sorted())
+    // Take one font for each available family, prioritizing regular variants
+    var fontFamilies: [GoogleFont] {
+        let families = downloader.fontMapping.values.sorted { a, b in
+            a.family < b.family
+        }
+        
+        return families.flatMap { family in
+            downloader.font(family: family.family, variant: "regular")
+        }
     }
     
     private init() {
