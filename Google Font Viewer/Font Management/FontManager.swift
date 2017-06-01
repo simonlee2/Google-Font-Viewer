@@ -58,7 +58,7 @@ extension FontManager {
         var error: Unmanaged<CFError>?
         
         guard CTFontManagerRegisterGraphicsFont(cgfont, &error) else {
-//            print(error)
+            print(error ?? "Error registering \(font)")
             return false
         }
         
