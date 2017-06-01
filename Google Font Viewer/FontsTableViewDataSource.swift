@@ -24,7 +24,7 @@ class FontsTableViewDataSource: NSObject, UITableViewDataSource {
         
         
         let font = fonts[indexPath.row]
-        let task = Fonts.shared.task(for: font.family, variant: font.variant, size: 20)
+        let task = Fonts.shared.addTask(for: font.family, variant: font.variant, size: 20)
         cell.configure(for: task)
         
         return cell
@@ -39,7 +39,7 @@ extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             let font = fonts[indexPath.row]
-            let task = Fonts.shared.task(for: font.family, variant: font.variant, size: 20)
+            let task = Fonts.shared.addTask(for: font.family, variant: font.variant, size: 20)
             
             task?.promise.then { uifont -> Void in
                 if uifont == nil {

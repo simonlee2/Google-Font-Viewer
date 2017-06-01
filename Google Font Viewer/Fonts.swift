@@ -47,7 +47,7 @@ class Fonts {
     
     // MARK: Add and remove tasks
     
-    func task(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
+    func addTask(for family: String, variant: String = "regular", size: CGFloat) -> FontTask? {
         let key = "\(family)-\(variant)"
         let task = tasks[key] ?? font(for: family, variant: variant, size: size)
         tasks[key] = task
