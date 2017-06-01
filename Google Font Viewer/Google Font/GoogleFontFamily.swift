@@ -30,12 +30,6 @@ struct GoogleFontFamily {
         lastModified = json["lastModified"].stringValue
     }
     
-    var fontNameAndFileURLs: [(String, String)] {
-        return files.map { name, url in
-            ("\(family) \(name)", url)
-        }
-    }
-    
     func font(withVariant variant: String) -> GoogleFont? {
         guard let file = files[variant] ?? files.first?.value else { return nil }
         
