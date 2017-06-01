@@ -17,7 +17,7 @@ class FontTableViewCell: UITableViewCell {
             fontBackgroundView.layer.cornerRadius = 5.0
             
             // shadows
-            fontBackgroundView.layer.shadowColor = UIColor.black.cgColor
+            fontBackgroundView.layer.shadowColor = Colors.shadow.uicolor.cgColor
             fontBackgroundView.layer.shadowOpacity = 0.1
             fontBackgroundView.layer.shadowRadius = 3
             fontBackgroundView.layer.shadowOffset = CGSize.zero

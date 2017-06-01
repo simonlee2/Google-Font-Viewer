@@ -20,13 +20,13 @@ class ViewController: UIViewController {
             
             // add border outline
             confirmButton.layer.borderWidth = 2.0
-            confirmButton.layer.borderColor = UIColor.black.cgColor
+            confirmButton.layer.borderColor = Colors.text.uicolor.cgColor
         }
     }
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recommendWifiView: UIView! {
         didSet {
-            recommendWifiView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
+            recommendWifiView.backgroundColor = Colors.background.uicolor
         }
     }
     
@@ -41,8 +41,7 @@ class ViewController: UIViewController {
         self.navigationItem.title = "Fonts"
         
         // Set up table view
-        self.tableView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1.0)
-        
+        self.tableView.backgroundColor = Colors.background.uicolor
     }
     
     override func viewDidLoad() {
