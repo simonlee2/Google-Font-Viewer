@@ -10,8 +10,6 @@ import UIKit
 import PromiseKit
 
 class FontTableViewCell: UITableViewCell {
-    let fontSize: CGFloat = 25
-    
     @IBOutlet weak var fontLabel: UILabel!
     @IBOutlet weak var fontBackgroundView: UIView! {
         didSet {
@@ -29,6 +27,40 @@ class FontTableViewCell: UITableViewCell {
     
     var task: FontTask?
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        if let task = task {
+            Fonts.shared.removeTask(for: task.family, variant: task.variant)
+        }
+        
+        fontLabel?.text = ""
+        fontLabel?.alpha = 0
+    }
+    
+    func configure(for fontTask: FontTask?) {
+        fontLabel?.text = ""
+        fontLabel?.alpha = 0
+        layer.backgroundColor = UIColor.clear.cgColor
+        
+        // Grab font and configure cell with it
+        task = fontTask
+        task?.promise.then { [weak self] uifont -> Void in
+            
+            self?.fontLabel?.font = uifont
+            self?.fontLabel?.text = uifont?.familyName
+            
+            UIView.animate(withDuration: 0.3) {
+                self?.fontLabel?.alpha = 1
+            }
+        }.catch { error in
+            print(error)
+        }
+    }
+}
+
+// MARK: Touch animations
+extension FontTableViewCell {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         UIView.animate(withDuration: 0.1) {
@@ -49,36 +81,5 @@ class FontTableViewCell: UITableViewCell {
             self.layer.setAffineTransform(CGAffineTransform.identity)
         }
         
-    }
-    
-    func configure(for fontTask: FontTask?) {
-        fontLabel?.text = ""
-        fontLabel?.alpha = 0
-        layer.backgroundColor = UIColor.clear.cgColor
-        
-        task = fontTask
-        
-        task?.promise.then { [weak self] uifont -> Void in
-            
-            self?.fontLabel?.font = uifont
-            self?.fontLabel?.text = uifont?.familyName
-            
-            UIView.animate(withDuration: 0.3) {
-                self?.fontLabel?.alpha = 1
-            }
-        }.catch { error in
-            print(error)
-        }
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        if let task = task {
-            Fonts.shared.removeTask(for: task.family, variant: task.variant)
-        }
-        
-        fontLabel?.text = ""
-        fontLabel?.alpha = 0
     }
 }
