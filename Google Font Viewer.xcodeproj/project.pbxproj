@@ -104,7 +104,6 @@
 				F42A6B411EDB12D1007A8F7B /* GoogleFontFamily.swift */,
 				F42A6B471EDD73C9007A8F7B /* GoogleFont.swift */,
 				F42A6B431EDC38F3007A8F7B /* GoogleFontDownloader.swift */,
-				F4292C1A1EE05BDA00394270 /* Errors.swift */,
 			);
 			name = "Google Font";
 			sourceTree = "<group>";
@@ -154,6 +153,7 @@
 			children = (
 				F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */,
 				F42A6B3D1EDAA0C0007A8F7B /* Keys.swift */,
+				F4292C1A1EE05BDA00394270 /* Errors.swift */,
 				F4292C171EE04ED200394270 /* Google Font */,
 				F4292C181EE04EE800394270 /* Fonts Table View Controller */,
 				F4292C191EE04F1600394270 /* Font Management */,
