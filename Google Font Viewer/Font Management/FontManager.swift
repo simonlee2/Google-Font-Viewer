@@ -22,20 +22,44 @@ class FontManager {
             return (Promise(value: UIFont(name: postScriptName, size: size)), {})
         }
         
-        let (promise, cancel) = downloadFont(font: font)
+        return downloadAndRegisterFont(font: font, size: size)
+//
+//        let (promise, cancel) = downloadFont(font: font)
+//        
+//        return (promise.then { [weak self] data in
+//            self?.registerFont(font, data: data as CFData)
+//        }.then { postScriptName -> UIFont? in
+//            guard let postScriptName = postScriptName else { return nil }
+//            
+//            return UIFont(name: postScriptName, size: size)
+//        }, cancel)
         
-        return (promise.then { [weak self] data in
-            self?.registerFont(font, data: data as CFData)
-        }.then { postScriptName -> UIFont? in
-            guard let postScriptName = postScriptName else { return nil }
-            
-            return UIFont(name: postScriptName, size: size)
-        }, cancel)
     }
     
 }
 
 extension FontManager {
+    internal func fetchFontFromMapping(for font: GoogleFont, size: CGFloat) -> Promise<UIFont?> {
+        if let postScriptName = postScriptNameMapping[font.name] {
+            return Promise(value: UIFont(name: postScriptName, size: size))
+        } else {
+            return Promise(value: nil)
+        }
+    }
+    
+    internal func downloadAndRegisterFont(font: GoogleFont, size: CGFloat) -> (Promise<UIFont?>, () -> Void) {
+        let (downloadPromise, cancel) = downloadFont(font: font)
+        
+        let downloadAndRegisterPromise = downloadPromise.then { [weak self] data in
+            self?.registerFont(font, data: data as CFData)
+        }.then { postScriptName -> UIFont? in
+            guard let postScriptName = postScriptName else { return nil }
+            
+            return UIFont(name: postScriptName, size: size)
+        }
+        
+        return (downloadAndRegisterPromise, cancel)
+    }
 
     internal func downloadFont(font: GoogleFont) -> (Promise<Data>, () -> Void) {
         let request = Alamofire.request(font.externalDocumentURL)
