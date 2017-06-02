@@ -52,6 +52,7 @@ class ViewController: UIViewController {
             self.dataSource = FontsTableViewDataSource(fonts: Fonts.shared.fontFamilies)
             self.tableView.prefetchDataSource = self.dataSource
             self.tableView.dataSource = self.dataSource
+            self.tableView.reloadData()
         }.catch { error in
             print(error)
         }
