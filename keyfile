@@ -1,0 +1,25 @@
+#!/bin/bash
+
+file="./Google Font Viewer/Keys.swift"
+
+# Check if Keys.swift already exists
+if [ -e "$file" ]
+then
+    echo "Keys.swift already exists."
+    echo "You can add/modifies keys directly in the file."
+    exit 1
+fi 
+
+# Grab key from parameter
+
+if [ "$#" -lt 1 ]
+then
+    echo "missing argument: api-key"
+elif [ "$#" -gt 1 ] 
+then
+    echo "Too many arguments"
+fi
+
+apikey=$1
+echo "let GoogleFontAPIKey = \"$apikey\"" > "$file"
+
