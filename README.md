@@ -2,6 +2,12 @@
 
 > Preview the different typefaces on Google Fonts
 
+## Requirements
+
+1. Xcode 8.3
+2. Cocoapods
+3. Google API key
+
 ## Installation
 **1. Source code:**
 
@@ -31,4 +37,4 @@ Get your keys on [Google Fonts Developers page](https://developers.google.com/fo
 
 **5. Build & Run**
 
-You should now be able to build and run the project in Xcode.
+You should now be able to build and run the project in Xcode 8.
