@@ -2,6 +2,18 @@
 
 file="./Google Font Viewer/Keys.swift"
 
+# Grab key from parameter
+
+if [ "$#" -lt 1 -o "$1" == "-h" -o "$1" == "--help" ]
+then
+    echo "Usage: ./keyfile <api-key>"
+    exit 1
+elif [ "$#" -gt 1 ] 
+then
+    echo "Too many arguments"
+    exit 1
+fi
+
 # Check if Keys.swift already exists
 if [ -e "$file" ]
 then
@@ -10,16 +22,8 @@ then
     exit 1
 fi 
 
-# Grab key from parameter
-
-if [ "$#" -lt 1 ]
-then
-    echo "missing argument: api-key"
-elif [ "$#" -gt 1 ] 
-then
-    echo "Too many arguments"
-fi
-
+# Generate file
 apikey=$1
 echo "let GoogleFontAPIKey = \"$apikey\"" > "$file"
-
+echo "Keys.swift has been generated for $apikey at $file"
+exit 0
