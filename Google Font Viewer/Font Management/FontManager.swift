@@ -11,6 +11,7 @@ import PromiseKit
 
 class FontManager {
     var postScriptNameMapping: [String: String]
+    let queue = DispatchQueue(label: "font", qos: .background, attributes: [.concurrent])
     
     init(postScriptNameMapping: [String: String] = [:]) {
         self.postScriptNameMapping = postScriptNameMapping
@@ -41,7 +42,7 @@ extension FontManager {
     internal func downloadFont(font: GoogleFont) -> (Promise<Data>, () -> Void) {
         let request = Alamofire.request(font.externalDocumentURL)
         return (Promise { fulfill, reject in
-            request.responseData(queue: DispatchQueue(label: "font")) { response in
+            request.responseData(queue: queue) { response in
                 switch response.result {
                 case .success:
                     fulfill(response.data!)
