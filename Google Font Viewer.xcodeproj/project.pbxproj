@@ -58,7 +58,7 @@
 		F4C3D7261EDE5E33007299D3 /* FontsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontsTableViewDataSource.swift; path = FontsTableViewController/FontsTableViewDataSource.swift; sourceTree = "<group>"; };
 		F4C3D7281EDE5FB5007299D3 /* FontTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontTableViewCell.swift; path = FontsTableViewController/FontTableViewCell.swift; sourceTree = "<group>"; };
 		F4C3D72A1EDEF0A8007299D3 /* FontTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontTask.swift; path = "Font Management/FontTask.swift"; sourceTree = "<group>"; };
-		F4C94FED1EDA8A8C0022F1F1 /* Google Font Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Font Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C94FED1EDA8A8C0022F1F1 /* Type.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Type.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C94FF01EDA8A8C0022F1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C94FF21EDA8A8C0022F1F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = FontsTableViewController/ViewController.swift; sourceTree = "<group>"; };
 		F4C94FF51EDA8A8C0022F1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		F4C94FEE1EDA8A8C0022F1F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4C94FED1EDA8A8C0022F1F1 /* Google Font Viewer.app */,
+				F4C94FED1EDA8A8C0022F1F1 /* Type.app */,
 				F4C950011EDA8A8C0022F1F1 /* Google Font ViewerTests.xctest */,
 			);
 			name = Products;
@@ -208,7 +208,7 @@
 			);
 			name = "Google Font Viewer";
 			productName = "Google Font Viewer";
-			productReference = F4C94FED1EDA8A8C0022F1F1 /* Google Font Viewer.app */;
+			productReference = F4C94FED1EDA8A8C0022F1F1 /* Type.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F4C950001EDA8A8C0022F1F1 /* Google Font ViewerTests */ = {
@@ -551,7 +551,7 @@
 				INFOPLIST_FILE = "Google Font Viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "simonlee.Google-Font-Viewer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Type;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -565,7 +565,7 @@
 				INFOPLIST_FILE = "Google Font Viewer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "simonlee.Google-Font-Viewer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Type;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
