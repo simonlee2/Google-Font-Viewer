@@ -14,7 +14,7 @@ typealias SortType = GoogleFontAPI.Endpoints.SortType
 
 class GoogleFontDownloader {
     var api: GoogleFontAPI
-    var fontMapping: [String: GoogleFontFamily]
+    private var fontMapping: [String: GoogleFontFamily]
     
     init(api: GoogleFontAPI = GoogleFontAPI(), fontMapping: [String: GoogleFontFamily] = [:]) {
         self.api = api
@@ -24,6 +24,17 @@ class GoogleFontDownloader {
     /// Find font through the famliy name and variant
     func font(family: String, variant: String) -> GoogleFont? {
         return fontMapping[family]?.font(withVariant: variant)
+    }
+    
+    /// An array of fonts by taking one font for each available family and prioritizing their regular variant
+    var fontFamilies: [GoogleFont] {
+        let families = fontMapping.values.sorted { a, b in
+            a.family < b.family
+        }
+        
+        return families.flatMap { family in
+            font(family: family.family, variant: "regular")
+        }
     }
     
     /// Fetch font familiy information from Google, then parse them into a list of `GoogleFontFamily`.

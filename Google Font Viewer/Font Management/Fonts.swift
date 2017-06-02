@@ -42,19 +42,11 @@ class Fonts {
 // Public API
 extension Fonts {
     
-    /// An array of fonts by taking one font for each available family and prioritizing their regular variant
     var fontFamilies: [GoogleFont] {
-        let families = downloader.fontMapping.values.sorted { a, b in
-            a.family < b.family
-        }
-        
-        return families.flatMap { family in
-            downloader.font(family: family.family, variant: "regular")
-        }
+        return downloader.fontFamilies
     }
     
     // MARK: Add and remove tasks
-    
     
     /// Add task for a font. A new task will be created if none exist yet. 
     /// The caller can modify the task and is responsible for starting the task
