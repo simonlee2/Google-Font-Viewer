@@ -91,6 +91,8 @@ extension FontManager {
             return nil
         }
         
+        postScriptNameMapping[font.name] = postScriptName
+        
         return postScriptName
     }
 }
