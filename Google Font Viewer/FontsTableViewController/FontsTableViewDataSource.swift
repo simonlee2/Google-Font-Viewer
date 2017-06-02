@@ -54,7 +54,7 @@ extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             let font = fonts[indexPath.row]
-            Fonts.shared.removeTask(for: font.family)
+            Fonts.shared.removeTask(for: font.family, variant: font.variant)
         }
     }
 }
