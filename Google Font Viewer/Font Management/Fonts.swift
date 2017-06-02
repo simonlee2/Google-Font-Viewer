@@ -25,6 +25,13 @@ class Fonts {
         manager = FontManager()
     }
     
+    
+    /// Fetches the font through `FontManager` and wraps its returned values in a `FontTask` struct.
+    ///
+    /// - Parameters:
+    ///   - font: A `GoogleFont` describing the font.
+    ///   - size: font size
+    /// - Returns: Task for fetching the font
     internal func fontTask(for font: GoogleFont, size: CGFloat) -> FontTask? {
         let (promise, cancel) = self.manager.font(for: font, size: size)
         return FontTask(family: font.family, variant: font.variant, promise: promise, cancel: cancel)
@@ -62,6 +69,12 @@ extension Fonts {
         return task
     }
     
+    /// Remove a task for a font. The `cancel` function for that download task is called.
+    ///
+    /// - Parameters:
+    ///   - family: font family
+    ///   - variant: font variant
+    /// - Returns: The task that's being removed
     @discardableResult func removeTask(for family: String, variant: String = "regular") -> FontTask? {
         let key = "\(family)-\(variant)"
         if let task = tasks[key] {
@@ -73,6 +86,11 @@ extension Fonts {
         return nil
     }
     
+    
+    /// Fetches all font families from Google and return those that are available.
+    ///
+    /// - Parameter sortType: option to sort families differently
+    /// - Returns: Promise of a list of font families from Google
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
         return downloader.fetchAllFamilies(sortType: sortType)
     }
