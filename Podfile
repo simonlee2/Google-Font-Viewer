@@ -9,7 +9,3 @@ target 'Google Font Viewer' do
     pod 'SwiftyJSON'
 end
 
-target 'Google Font ViewerTests' do
-
-end
-
