@@ -2,16 +2,20 @@
 
 > Preview the different typefaces on Google Fonts
 
-## Installation Instructions
+## Installation
 **1. Source code:**
 
-`git clone git@github.com:simonlee2/Google-Font-Viewer.git`
+```
+git clone git@github.com:simonlee2/Google-Font-Viewer.git
+```
 
 **2. Download dependencies**
 
 Cocoapods is used to manage dependencies.
 
-`pod install`
+```
+pod install
+```
 
 **3. Get Google Fonts API key**
 
