@@ -9,6 +9,7 @@
 import UIKit
 
 class FontsTableViewDataSource: NSObject, UITableViewDataSource {
+    let defaultFontSize: CGFloat = 20
     var fonts: [GoogleFont] = []
     
     init(fonts: [GoogleFont] = []){
@@ -24,7 +25,7 @@ class FontsTableViewDataSource: NSObject, UITableViewDataSource {
         
         
         let font = fonts[indexPath.row]
-        let task = Fonts.shared.addTask(for: font, size: 20)
+        let task = Fonts.shared.addTask(for: font, size: defaultFontSize)
         cell.configure(for: task)
         
         return cell
@@ -39,8 +40,9 @@ extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
             let font = fonts[indexPath.row]
-            let task = Fonts.shared.addTask(for: font, size: 20)
+            let task = Fonts.shared.addTask(for: font, size: defaultFontSize)
             
+            // Fetch the font
             task?.promise.then { uifont -> Void in
                 if uifont == nil {
                     print("Failed to prefetch \(font.name)")
