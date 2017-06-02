@@ -21,19 +21,25 @@ class GoogleFontDownloader {
         self.fontMapping = fontMapping
     }
     
+    /// Find font through the famliy name and variant
     func font(family: String, variant: String) -> GoogleFont? {
         return fontMapping[family]?.font(withVariant: variant)
     }
     
+    /// Fetch font familiy information from Google, then parse them into a list of `GoogleFontFamily`.
+    /// Each family is added to a dictionary that can be queried by the famliy name.
+    ///
+    /// - Parameter sortType: option to sort the list of families
+    /// - Returns: A promise of a list of families.
     func fetchAllFamilies(sortType: SortType? = nil) -> Promise<[GoogleFontFamily]> {
         return fetchAllFamiliesJSON(sortType: sortType).then { json in
             self.parseItemsFromJSON(json)
         }.then { items -> [GoogleFontFamily] in
-            let fonts = items.map(GoogleFontFamily.init)
-            fonts.forEach { font in
-                self.fontMapping[font.family] = font
+            let families = items.map(GoogleFontFamily.init)
+            families.forEach { family in
+                self.fontMapping[family.family] = family
             }
-            return fonts
+            return families
         }
     }
     
