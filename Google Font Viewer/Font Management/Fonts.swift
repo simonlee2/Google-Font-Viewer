@@ -35,7 +35,7 @@ class Fonts {
 // Public API
 extension Fonts {
     
-    // Take one font for each available family, prioritizing regular variants
+    /// An array of fonts by taking one font for each available family and prioritizing their regular variant
     var fontFamilies: [GoogleFont] {
         let families = downloader.fontMapping.values.sorted { a, b in
             a.family < b.family
@@ -48,6 +48,14 @@ extension Fonts {
     
     // MARK: Add and remove tasks
     
+    
+    /// Add task for a font. A new task will be created if none exist yet. 
+    /// The caller can modify the task and is responsible for starting the task
+    ///
+    /// - Parameters:
+    ///   - font: `GoogleFont`
+    ///   - size: font size
+    /// - Returns: Task for fetching the font
     func addTask(for font: GoogleFont, size: CGFloat) -> FontTask? {
         let task = tasks[font.name] ?? fontTask(for: font, size: size)
         tasks[font.name] = task
