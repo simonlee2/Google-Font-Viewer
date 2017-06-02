@@ -45,7 +45,7 @@ extension FontsTableViewDataSource: UITableViewDataSourcePrefetching {
                 if uifont == nil {
                     print("Failed to prefetch \(font.name)")
                 }
-            }.catch{ error in
+            }.catch { error in
                 print(error)
             }
         }

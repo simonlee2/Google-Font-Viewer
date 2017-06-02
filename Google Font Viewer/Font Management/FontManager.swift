@@ -26,12 +26,10 @@ class FontManager {
         
         return (promise.then { [weak self] data in
             self?.registerFont(font, data: data as CFData)
-        }.then { [weak self] _ -> UIFont? in
-            if let postScriptName = self?.postScriptNameMapping[font.name] {
-                return UIFont(name: postScriptName, size: size)
-            } else {
-                return nil
-            }
+        }.then { postScriptName -> UIFont? in
+            guard let postScriptName = postScriptName else { return nil }
+            
+            return UIFont(name: postScriptName, size: size)
         }, cancel)
     }
     
@@ -53,23 +51,22 @@ extension FontManager {
         }, request.cancel)
     }
     
-    internal func registerFont(_ font: GoogleFont, data: CFData) -> Bool {
+    internal func registerFont(_ font: GoogleFont, data: CFData) -> String? {
+    
         let provider = CGDataProvider(data: data)
         let cgfont = CGFont(provider!)
         var error: Unmanaged<CFError>?
         
         guard CTFontManagerRegisterGraphicsFont(cgfont, &error) else {
             print(error ?? "Error registering \(font)")
-            return false
+            return nil
         }
         
         guard let postScriptName = cgfont.postScriptName as String? else {
             CTFontManagerUnregisterGraphicsFont(cgfont, nil)
-            return false
+            return nil
         }
         
-        postScriptNameMapping[font.name] = postScriptName
-        
-        return true
+        return postScriptName
     }
 }

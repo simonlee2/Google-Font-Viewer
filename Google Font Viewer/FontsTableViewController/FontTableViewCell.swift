@@ -34,6 +34,7 @@ class FontTableViewCell: UITableViewCell {
             Fonts.shared.removeTask(for: task.family, variant: task.variant)
         }
         
+        task = nil
         fontLabel?.text = ""
         fontLabel?.alpha = 0
     }
