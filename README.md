@@ -2,6 +2,10 @@
 
 > Preview the different typefaces on Google Fonts
 
+## Screenshots
+
+<img src="Assets/screenshot.png" width="200"><img src="Assets/screenshot-main.png" width="200">
+
 ## Requirements
 
 1. Xcode 8.3
@@ -38,3 +42,7 @@ Get your keys on [Google Fonts Developers page](https://developers.google.com/fo
 **5. Build & Run**
 
 You should now be able to build and run the project in Xcode 8.
+
+## Demo
+
+<img src="Assets/demo.gif" width="200">
